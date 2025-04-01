@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocuidado Diario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .message-box {
+            display: none;
+            padding: 20px;
+            background: #80cbc4;
+            color: #004d40;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            max-width: 500px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #00796b;
+        }
+        #getMessage {
+            background-color: #4db6ac;
+            border: none;
+            transition: all 0.5s ease-in-out;
+            padding: 12px 24px;
+        }
+        #getMessage:hover {
+            background-color: #26a69a;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundjay.com/nature/rain-01.mp3" type="audio/mpeg">
+        <source src="https://www.soundjay.com/nature/waterfall-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <h1 class="mb-4"><i class="fas fa-leaf"></i> Tómate un respiro</h1>
+    <button id="getMessage" class="btn btn-lg text-white animate__animated animate__pulse animate__infinite">
+        <i class="fas fa-heart"></i> ¿Qué necesito hoy?
+    </button>
+    <div id="message" class="message-box animate__animated animate__fadeIn"></div>
+    
+    <script>
+        $(document).ready(function(){
+            const messages = [
+                "<i class='fas fa-smile'></i> Respira profundo y relájate.",
+                "<i class='fas fa-coffee'></i> Date un momento para ti.",
+                "<i class='fas fa-music'></i> Escucha tu canción favorita.",
+                "<i class='fas fa-tree'></i> Sal a caminar y disfruta el aire fresco.",
+                "<i class='fas fa-tint'></i> Hidrátate y cuida tu cuerpo.",
+                "<i class='fas fa-child'></i> Haz una pausa y estira tu cuerpo.",
+                "<i class='fas fa-sun'></i> Sonríe, es un nuevo día lleno de posibilidades.",
+                "<i class='fas fa-heart'></i> Agradece algo bonito de tu día.",
+                "<i class='fas fa-pen'></i> Escribe tus pensamientos y libérate.",
+                "<i class='fas fa-phone'></i> Llámale a un ser querido solo para saludar.",
+                "<i class='fas fa-book'></i> Lee unas páginas de un libro que te guste.",
+                "<i class='fas fa-spa'></i> Dedica unos minutos a meditar o practicar mindfulness.",
+                "<i class='fas fa-seedling'></i> Cuida una planta o conéctate con la naturaleza.",
+                "<i class='fas fa-bath'></i> Date un baño relajante con agua tibia.",
+                "<i class='fas fa-star'></i> Recuerda un logro personal y celébralo.",
+                "<i class='fas fa-utensils'></i> Prepara tu comida favorita y disfrútala con calma.",
+                "<i class='fas fa-walking'></i> Muévete, baila o haz ejercicio para sentirte mejor.",
+                "<i class='fas fa-moon'></i> Desconéctate un rato de las pantallas y relájate."
+            ];
+            
+            const sounds = [
+                "https://www.soundjay.com/nature/rain-01.mp3",
+                "https://www.soundjay.com/nature/waterfall-1.mp3"
+            ];
+            
+            let audio = document.getElementById("bgMusic");
+            audio.src = sounds[Math.floor(Math.random() * sounds.length)];
+            audio.play();
+            
+            $('#getMessage').click(function(){
+                let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                $('#message').html(randomMessage).show().addClass("animate__bounceIn");
+            });
+        });
+    </script>
+</body>
+</html>
